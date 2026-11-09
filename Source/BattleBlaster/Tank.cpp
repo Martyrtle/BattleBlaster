@@ -2,6 +2,8 @@
 
 
 #include "Tank.h"
+#include "Camera/CameraComponent.h"
+#include "InputMappingContext.h"
 
 // Sets default values
 ATank::ATank()

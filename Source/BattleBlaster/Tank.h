@@ -6,6 +6,8 @@
 #include "BasePawn.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "InputMappingContext.h"
+#include "EnhancedInputSubsystems.h"
 #include "Tank.generated.h"
 
 /**
@@ -27,6 +29,9 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputMappingContext* defaultMappingContext;
 
 	UPROPERTY(VisibleAnywhere)
 	USpringArmComponent* springArmComp;

@@ -40,3 +40,19 @@ void ATank::Tick(float DeltaTime)
 
 }
 
+// Called to bind functionality to input
+void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	if (UEnhancedInputComponent* enhancedInputComp = Cast<UEnhancedInputComponent>(PlayerInputComponent))
+	{
+		enhancedInputComp->BindAction(moveAction, ETriggerEvent::Triggered, this, &ATank::MoveInput);
+	}
+}
+
+void ATank::MoveInput()
+{
+	UE_LOG(LogTemp, Display, TEXT("MoveInput!"));
+}
+

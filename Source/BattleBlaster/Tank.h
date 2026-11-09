@@ -6,6 +6,9 @@
 #include "BasePawn.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "InputAction.h"
+#include "InputActionValue.h"
+#include "EnhancedInputComponent.h"
 #include "Tank.generated.h"
 
 class UCameraComponent;
@@ -31,8 +34,14 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputMappingContext* defaultMappingContext;
+
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* moveAction;
 
 	UPROPERTY(VisibleAnywhere)
 	USpringArmComponent* springArmComp;
@@ -40,4 +49,6 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* cameraComp;
 	
+	void MoveInput();
+
 };

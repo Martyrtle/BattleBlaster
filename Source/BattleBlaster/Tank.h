@@ -49,6 +49,6 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* cameraComp;
 	
-	void MoveInput();
+	void MoveInput(const FInputActionValue& value);
 
 };

@@ -48,6 +48,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* cameraComp;
+
+	UPROPERTY(EditAnywhere)
+	float speed = 300.0f;
 	
 	void MoveInput(const FInputActionValue& value);
 

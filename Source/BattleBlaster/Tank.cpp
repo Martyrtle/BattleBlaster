@@ -54,6 +54,9 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ATank::MoveInput(const FInputActionValue& value)
 {
 	float inputValue = value.Get<float>();
-	UE_LOG(LogTemp, Display, TEXT("InputValue: %f"), inputValue);
+	
+	FVector deltaLocation = FVector::Zero();
+	deltaLocation.X = speed * inputValue * GetWorld()->GetDeltaSeconds();
+	AddActorLocalOffset(deltaLocation, true);
 }
 

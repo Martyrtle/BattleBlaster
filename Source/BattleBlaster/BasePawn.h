@@ -36,4 +36,6 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* turretMesh;
 
+	void RotateTurret(FVector lookAtTarget);
+
 };

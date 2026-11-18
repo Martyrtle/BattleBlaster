@@ -23,5 +23,16 @@ void ABattleBlasterGameMode::BeginPlay()
 			UE_LOG(LogTemp, Display, TEXT("GameMode: Failed to find the tank actor!"));
 		}
 	}
+
+	UE_LOG(LogTemp, Display, TEXT("Start of the loop!"));
+	int32 loopIndex = 0;
+	while (loopIndex < 10)
+	{
+
+		UE_LOG(LogTemp, Display, TEXT("LoopIndex: %d!"), loopIndex);
+
+		loopIndex++;
+	}
+	UE_LOG(LogTemp, Display, TEXT("End of the loop!"));
 }
 

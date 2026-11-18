@@ -11,6 +11,8 @@ AProjectile::AProjectile()
 
 	projectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));
 	SetRootComponent(projectileMesh);
+
+	projectileMovementComp = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovementComp"));
 }
 
 // Called when the game starts or when spawned

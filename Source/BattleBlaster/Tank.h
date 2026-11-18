@@ -41,6 +41,9 @@ public:
 	UInputMappingContext* defaultMappingContext;
 
 	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* fireAction;
+
+	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* moveAction;
 
 	UPROPERTY(EditAnywhere, Category = "Input")

@@ -18,6 +18,9 @@ ABasePawn::ABasePawn()
 	turretMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TurretMesh"));
 	turretMesh->SetupAttachment(baseMesh);
 
+	projectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("ProjectileSpawnPoint"));
+	projectileSpawnPoint->SetupAttachment(turretMesh);
+
 }
 
 // Called when the game starts or when spawned
@@ -39,6 +42,14 @@ void ABasePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void ABasePawn::Fire()
+{
+	FVector spawnLocation = projectileSpawnPoint->GetComponentLocation();
+	FRotator spawnRotation = projectileSpawnPoint->GetComponentRotation();
+
+	DrawDebugSphere(GetWorld(), spawnLocation, 20.0f, 20, FColor::Red, false, 3.0f);
 }
 
 void ABasePawn::RotateTurret(FVector lookAtTarget)

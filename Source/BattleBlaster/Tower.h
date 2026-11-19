@@ -35,6 +35,8 @@ public:
 
 	ATank* tank;
 
+	void HandleDestruction();
+
 	void CheckFireCondition();
 
 	bool IsInFireRange();

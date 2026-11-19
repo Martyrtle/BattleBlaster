@@ -64,3 +64,8 @@ void ABasePawn::RotateTurret(FVector lookAtTarget)
 	turretMesh->SetWorldRotation(interpolatedRotation);
 }
 
+void ABasePawn::HandleDestruction()
+{
+	UE_LOG(LogTemp, Display, TEXT("BasePawn HandleDestruction!"));
+}
+

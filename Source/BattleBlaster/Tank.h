@@ -37,6 +37,15 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* springArmComp;
+
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* cameraComp;
+
+	UPROPERTY(VisibleAnywhere)
+	bool isAlive = true;
+
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputMappingContext* defaultMappingContext;
 
@@ -49,20 +58,18 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* turnAction;
 
-	UPROPERTY(VisibleAnywhere)
-	USpringArmComponent* springArmComp;
-
-	UPROPERTY(VisibleAnywhere)
-	UCameraComponent* cameraComp;
-
 	UPROPERTY(EditAnywhere)
 	float speed = 300.0f;
 
 	UPROPERTY(EditAnywhere)
 	float turnRate = 100.0f;
+
+	APlayerController* playerController;
 	
 	void MoveInput(const FInputActionValue& value);
-
 	void TurnInput(const FInputActionValue& value);
+
+	void HandleDestruction();
+	void SetPlayerEnabled(bool enabled);
 
 };

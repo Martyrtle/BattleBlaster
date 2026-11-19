@@ -32,7 +32,7 @@ void ATower::HandleDestruction()
 {
 	Super::HandleDestruction();
 
-	UE_LOG(LogTemp, Display, TEXT("Tower HandleDestruction!"));
+	Destroy();
 }
 
 void ATower::CheckFireCondition()

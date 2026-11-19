@@ -42,6 +42,9 @@ void ABattleBlasterGameMode::BeginPlay()
 
 		loopIndex++;
 	}
+
+	countdownSeconds = countdownDelay;
+	GetWorldTimerManager().SetTimer(countdownTimerHandle, this, &ABattleBlasterGameMode::OnCountdownTimerTimeout, 1.0f, true);
 }
 
 void ABattleBlasterGameMode::ActorDied(AActor* deadActor)
@@ -93,6 +96,25 @@ void ABattleBlasterGameMode::OnGameOverTimeout()
 				battleBlasterGameInstance->RestartCurrentLevel();
 			}
 		}
+	}
+}
+
+void ABattleBlasterGameMode::OnCountdownTimerTimeout()
+{
+	countdownSeconds--;
+	if (countdownSeconds > 0)
+	{
+		UE_LOG(LogTemp, Display, TEXT("Countdown: %d"), countdownSeconds);
+	}
+	else if (countdownSeconds == 0)
+	{
+		UE_LOG(LogTemp, Display, TEXT("GO!"));
+		tank->SetPlayerEnabled(true);
+	}
+	else
+	{
+		GetWorldTimerManager().ClearTimer(countdownTimerHandle);
+		UE_LOG(LogTemp, Display, TEXT("Clear timer"));
 	}
 }
 

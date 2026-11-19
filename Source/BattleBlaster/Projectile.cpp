@@ -2,6 +2,7 @@
 
 
 #include "Projectile.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AProjectile::AProjectile()
@@ -32,9 +33,14 @@ void AProjectile::Tick(float DeltaTime)
 
 void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	if (OtherActor)
+	if (AActor* myOwner = GetOwner())
 	{
-		UE_LOG(LogTemp, Display, TEXT("Projectile hit %s"), *OtherActor->GetActorNameOrLabel());
+		if (OtherActor && OtherActor != myOwner && OtherActor != this)
+		{
+			UGameplayStatics::ApplyDamage(OtherActor, damage, myOwner->GetInstigatorController(), this, UDamageType::StaticClass());
+		}
 	}
+
+	Destroy();
 }
 

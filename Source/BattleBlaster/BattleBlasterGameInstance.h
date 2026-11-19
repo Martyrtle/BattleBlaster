@@ -20,5 +20,12 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	int32 currentLevelIndex = 1;
+
+	void LoadNextLevel();
+	void RestartCurrentLevel();
+	void RestartGame();
 	
+private:
+	void ChangeLevel(int32 index);
+
 };

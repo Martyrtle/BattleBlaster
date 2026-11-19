@@ -20,9 +20,14 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	UPROPERTY(EditAnywhere)
+	float gameOverDelay = 3.0f;
+
 	ATank* tank;
 	int32 towerCount;
 
 	void ActorDied(AActor* deadActor);
+
+	void OnGameOverTimeout();
 	
 };
